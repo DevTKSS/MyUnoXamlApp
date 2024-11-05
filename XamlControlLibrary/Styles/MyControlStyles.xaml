@@ -1,0 +1,25 @@
+﻿<ResourceDictionary
+xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+xmlns:utu="using:Uno.Toolkit.UI"
+xmlns:local="using:tks_controllibrary">
+  <!--<local:EmptyStringToBooleanConverter x:Key="EmptyStringToBooleanConverter"/>-->
+  <Style TargetType="local:TextBoxWithRequiredInput">
+    <Setter Property="Template">
+      <Setter.Value>
+        <ControlTemplate TargetType="local:TextBoxWithRequiredInput">
+          <utu:AutoLayout Orientation="Vertical"
+                          Spacing="5">
+            <TextBox x:Name="InputTextBox"
+                     Text="{TemplateBinding Text}"
+                     PlaceholderText="{TemplateBinding PlaceholderText}"
+                     HorizontalAlignment="Stretch"/>
+            <TextBlock x:Name="ErrorTextBlock"
+                       x:Uid="TextBoxWithRequiredInput_ErrorMessage"
+                       Visibility="{Binding ElementName=InputTextBox,Source=string.IsNullOrEmpty(InputTextBox.Text)}"/>
+          </utu:AutoLayout>
+        </ControlTemplate>
+      </Setter.Value>
+    </Setter>
+  </Style>
+</ResourceDictionary>
