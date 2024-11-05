@@ -17,27 +17,28 @@
         <RowDefinition Height="Auto" />
         <RowDefinition />
       </Grid.RowDefinitions>
-      <utu:NavigationBar x:Name="HeadNavigationBar" Content="{Binding Title}" /> <!--Binding seems to be must used here since its only liking static things-->
+      <utu:NavigationBar x:Name="HeadNavigationBar"
+                         Content="{x:Bind Model.Name,Mode=OneWay}" /> <!--Binding seems to be must used here since its only liking static things-->
 
       <StackPanel x:Name="ContentStackPanel" Grid.Row="1"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            Spacing="10">
+                  HorizontalAlignment="Center"
+                  VerticalAlignment="Center"
+                  Spacing="10">
         <!--<myControlLib:TextBoxWithRequiredInput/>-->
         <TextBox x:Name="tbName"
-                 Text="{Binding Name, Mode=TwoWay}" 
+                 Text="{x:Bind Model.Name, Mode=TwoWay}" 
                  PlaceholderText="Enter your name:"
                  BorderBrush="{StaticResource ResourceKey=error}"> <!--Binding seems to be must used also for Name, not static-->
         </TextBox>
         <Button x:Name="StartButton"
                 Content="Start a cool simple Game!"
                 AutomationProperties.AutomationId="SecondPageButton"
-                Command="{Binding GoToStart}"
+                Command="{x:Bind Model.GoToStartCommand}"
                 HorizontalAlignment="Stretch"
                 Visibility="{x:Bind tbName.Text, Converter={StaticResource StringToVisibleConverter}, Mode=OneWay}"/>
         <Button x:Name="SomeButton"
                 Content="One More Button"
-                Command="{Binding ShowMyDialog}"
+                Click="{x:Bind ShowMyDialog}"
                 HorizontalAlignment="Stretch"/>
         <!--<<DropDownButton x:Name="DropThatDown"
                         Content="Lets Drop that down!">

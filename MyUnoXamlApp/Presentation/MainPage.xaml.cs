@@ -11,15 +11,16 @@ namespace MyUnoXamlApp.Presentation;
 [Bindable]
 public sealed partial class MainPage : Page
 {
-    
+    public MainModel Model => (MainModel)DataContext;
     private readonly HashSet<uint> activePointerIds = new HashSet<uint>();
     private bool isPointerCaptured = false;
+
     public MainPage()
     {
         this.InitializeComponent();
         this.Loaded += MainPage_Loaded;
         //this.Unloaded += MainPage_Unloaded;
-        
+                
     }
 
     //private void MainPage_Unloaded(object sender, RoutedEventArgs e)
