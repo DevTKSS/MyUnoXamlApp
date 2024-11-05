@@ -33,7 +33,7 @@
         <Button x:Name="StartButton"
                 Content="Start a cool simple Game!"
                 AutomationProperties.AutomationId="SecondPageButton"
-                Command="{x:Bind Model.GoToStartCommand}"
+                Command="{x:Bind Model.GoToStart}"
                 HorizontalAlignment="Stretch"
                 Visibility="{x:Bind tbName.Text, Converter={StaticResource StringToVisibleConverter}, Mode=OneWay}"/>
         <Button x:Name="SomeButton"
