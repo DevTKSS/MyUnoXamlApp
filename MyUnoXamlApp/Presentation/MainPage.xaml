@@ -18,7 +18,7 @@
         <RowDefinition />
       </Grid.RowDefinitions>
       <utu:NavigationBar x:Name="HeadNavigationBar"
-                         Content="{x:Bind Model.Name,Mode=OneWay}" /> <!--Binding seems to be must used here since its only liking static things-->
+                         Content="{x:Bind vm.Title, Mode=OneWay}" /> <!--Binding seems to be must used here since its only liking static things-->
 
       <StackPanel x:Name="ContentStackPanel" Grid.Row="1"
                   HorizontalAlignment="Center"
@@ -26,14 +26,14 @@
                   Spacing="10">
         <!--<myControlLib:TextBoxWithRequiredInput/>-->
         <TextBox x:Name="tbName"
-                 Text="{x:Bind Model.Name, Mode=TwoWay}" 
+                 Text="{x:Bind vm.Name, Mode=TwoWay}" 
                  PlaceholderText="Enter your name:"
                  BorderBrush="{StaticResource ResourceKey=error}"> <!--Binding seems to be must used also for Name, not static-->
         </TextBox>
         <Button x:Name="StartButton"
                 Content="Start a cool simple Game!"
                 AutomationProperties.AutomationId="SecondPageButton"
-                Command="{x:Bind Model.GoToStart}"
+                Command="{x:Bind vm.GoToStart}"
                 HorizontalAlignment="Stretch"
                 Visibility="{x:Bind tbName.Text, Converter={StaticResource StringToVisibleConverter}, Mode=OneWay}"/>
         <Button x:Name="SomeButton"
