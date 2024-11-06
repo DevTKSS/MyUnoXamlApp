@@ -11,6 +11,9 @@
   <Page.Resources>
     <wctk:StringVisibilityConverter x:Key="StringToVisibleConverter"/>
   </Page.Resources>
+  <Page.DataContext>
+     <local:MainViewModel />
+  </Page.DataContext>
   <ScrollViewer x:Name="svControl">
     <Grid x:Name="GridControlInScrollViewer" utu:SafeArea.Insets="VisibleBounds">
       <Grid.RowDefinitions>
