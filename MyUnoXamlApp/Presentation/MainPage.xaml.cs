@@ -11,7 +11,7 @@ namespace MyUnoXamlApp.Presentation;
 [Bindable]
 public sealed partial class MainPage : Page
 {
-    private MainViewModel vm => (MainViewModel)DataContext;
+   // private MainViewModel vm => (MainViewModel)DataContext;
     private readonly HashSet<uint> activePointerIds = new HashSet<uint>();
     private bool isPointerCaptured = false;
 
@@ -75,6 +75,11 @@ public sealed partial class MainPage : Page
             string exceptionDetails = ExceptionHelper.HandleException(ex);
             Console.WriteLine("MainPage_Loaded caught Exception: " + exceptionDetails);
         }
+    }
+
+    private void SomeButton_Click(object sender, RoutedEventArgs e)
+    {
+        ShowMyDialog(sender, e);
     }
 
     private void tbName_OnKeyDown(object sender, KeyRoutedEventArgs e)
