@@ -11,9 +11,6 @@
   <Page.Resources>
     <wctk:StringVisibilityConverter x:Key="StringToVisibleConverter"/>
   </Page.Resources>
-  <Page.DataContext>
-     <local:MainViewModel />
-  </Page.DataContext>
   <ScrollViewer x:Name="svControl">
     <Grid x:Name="GridControlInScrollViewer" utu:SafeArea.Insets="VisibleBounds">
       <Grid.RowDefinitions>
@@ -21,7 +18,7 @@
         <RowDefinition />
       </Grid.RowDefinitions>
       <utu:NavigationBar x:Name="HeadNavigationBar"
-                         Content="{x:Bind vm.Title, Mode=OneWay}" /> <!--Binding seems to be must used here since its only liking static things-->
+                         Content="{x:Bind vm.Title, Mode=OneWay}" />
 
       <StackPanel x:Name="ContentStackPanel" Grid.Row="1"
                   HorizontalAlignment="Center"
@@ -29,9 +26,9 @@
                   Spacing="10">
         <!--<myControlLib:TextBoxWithRequiredInput/>-->
         <TextBox x:Name="tbName"
-                 Text="{x:Bind vm.Name, Mode=TwoWay}" 
+                 Text="{Binding Name, Mode=TwoWay}" 
                  PlaceholderText="Enter your name:"
-                 BorderBrush="{StaticResource ResourceKey=error}"> <!--Binding seems to be must used also for Name, not static-->
+                 BorderBrush="{StaticResource ResourceKey=error}">
         </TextBox>
         <Button x:Name="StartButton"
                 Content="Start a cool simple Game!"
