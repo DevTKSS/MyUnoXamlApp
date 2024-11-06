@@ -11,7 +11,7 @@ namespace MyUnoXamlApp.Presentation;
 [Bindable]
 public sealed partial class MainPage : Page
 {
-    public MainViewModel vm => (MainViewModel)DataContext;
+    private MainViewModel vm => (MainViewModel)DataContext;
     private readonly HashSet<uint> activePointerIds = new HashSet<uint>();
     private bool isPointerCaptured = false;
 
