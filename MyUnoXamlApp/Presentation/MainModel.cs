@@ -1,4 +1,5 @@
 
+using System.Xml.Linq;
 using MyUnoXamlApp.Services.XamlRootProvider;
 
 namespace MyUnoXamlApp.Presentation;
@@ -20,10 +21,19 @@ public partial record MainModel
 
     public IState<string> Name => State<string>.Value(this, () => string.Empty);
 
+    public IState<string> DialogAnswer => State<string>.Value(this, () => string.Empty);
+
     public async Task GoToStart()
     {
         var name = await Name;
         await _navigator.NavigateViewModelAsync<SecondModel>(this, data: new Entity(name!));
+    }
+
+
+    public async Task NavigateMyDialog()
+    {
+        var result = await _navigator.NavigateViewModelAsync<ContentDialogs.CoolContentDialog>(this);
+        await this.DialogAnswer.SetAsync(result?.ToString() ?? string.Empty);
     }
 
     public async Task ShowMyDialog()

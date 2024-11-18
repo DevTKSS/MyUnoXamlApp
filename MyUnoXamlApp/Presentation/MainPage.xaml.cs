@@ -11,7 +11,7 @@ namespace MyUnoXamlApp.Presentation;
 [Bindable]
 public sealed partial class MainPage : Page
 {
-    private MainViewModel vm => (MainViewModel)DataContext;
+    public MainViewModel? ViewModel => DataContext as MainViewModel;
 
     public MainPage()
     {
@@ -19,25 +19,23 @@ public sealed partial class MainPage : Page
         this.Loaded += (s,e) => XamlRootService.Initialize(this.XamlRoot!);        
     }
 
-    public async Task ShowMyDialog()
+    public async void JustShowThisDialog(object sender, RoutedEventArgs e)
     {
         try
         {
-         
             var dialog = new ContentDialog()
             {
                 Title = "Hello!",
                 Content = "No Message for you",
                 PrimaryButtonText = "Okay",
-                XamlRoot = this.XamlRoot,
+                XamlRoot = XamlRootService.GetXamlRoot(),
             };
             await dialog.ShowAsync();
-           
+
         }
         catch (Exception ex)
         {
             Console.WriteLine($"ShowMyDialog got exception: {ex.Message}");
         }
     }
-
 }

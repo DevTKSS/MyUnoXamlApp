@@ -14,18 +14,21 @@ using Microsoft.UI.Xaml.Navigation;
 
 namespace MyUnoXamlApp.Presentation.ContentDialogs;
 [Bindable]
-	public sealed partial class CoolContentDialog : ContentDialog
-	{
-		public CoolContentDialog()
-		{
-			this.InitializeComponent();
-		}
+public sealed partial class CoolContentDialog : ContentDialog
+{
 
-		private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
-		{
-		}
+    public CoolContentDialog()
+    {
+        this.InitializeComponent();
+    }
+
+	private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+    {
+      _ = this.Navigator()?.NavigateBackAsync(this);
+    }
 
 		private void ContentDialog_SecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
-		{
-		}
+    { 
+        _ = this.Navigator()?.NavigateBackAsync(this);
+    }
 	}

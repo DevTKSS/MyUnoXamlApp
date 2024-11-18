@@ -105,6 +105,7 @@ public partial class App : Application
                 [
                     new ("Main", View: views.FindByViewModel<MainModel>(), IsDefault:true),
                     new ("Second", View: views.FindByViewModel<SecondModel>()),
+                    new ("Cool", View: views.FindByViewModel<Presentation.ContentDialogs.CoolContentDialog>()),
                 ]
             )
         );

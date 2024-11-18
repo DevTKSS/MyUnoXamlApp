@@ -4,10 +4,10 @@
       xmlns:local="using:MyUnoXamlApp.Presentation"
       xmlns:utu="using:Uno.Toolkit.UI"
       xmlns:um="using:Uno.Material"
+      xmlns:uen="using:Uno.Extensions.Navigation.UI"
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       mc:Ignorable="d"
-      d:DataContext="{d:DesignInstance local:MainViewModel}"
       NavigationCacheMode="Required"
       Background="{ThemeResource BackgroundBrush}">
   <ScrollViewer x:Name="svControl">
@@ -17,22 +17,26 @@
         <RowDefinition />
       </Grid.RowDefinitions>
       <utu:NavigationBar x:Name="HeadNavigationBar"
-                         Content="{x:Bind vm.Title, Mode=OneWay}" />
+                         Content="{x:Bind ViewModel.Title, Mode=OneWay}" />
       <StackPanel x:Name="ContentStackPanel" Grid.Row="1"
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Spacing="10">
         <TextBox x:Name="tbName"
-                 Text="{x:Bind vm.Name, Mode=TwoWay}" 
+                 Text="{x:Bind ViewModel.Name, Mode=TwoWay}" 
                  PlaceholderText="Enter your name:"/>
-        <Button x:Name="StartButton"
+        <Button x:Name="StartButton(ViewModel)"
                 Content="Start a cool simple Game!"
                 AutomationProperties.AutomationId="SecondPageButton"
-                Command="{x:Bind vm.GoToStart}"
+                uen:Navigation.Request="!Cool"
+                HorizontalAlignment="Stretch"/>
+        <Button x:Name="JustSomeDialog"
+                Content="Why the hell is this ContentDialog not working?!?"
+                Click="JustShowThisDialog"
                 HorizontalAlignment="Stretch"/>
         <Button x:Name="SomeButton"
                 Content="One More Button"
-                Command="{x:Bind vm.ShowMyDialog}"
+                Command="{x:Bind ViewModel.ShowMyDialog}"
                 HorizontalAlignment="Stretch"/>
       </StackPanel>
     </Grid>
