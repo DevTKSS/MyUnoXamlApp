@@ -1,3 +1,4 @@
+
 using MyUnoXamlApp.Services.XamlRootProvider;
 
 namespace MyUnoXamlApp.Presentation;
@@ -23,6 +24,26 @@ public partial record MainModel
     {
         var name = await Name;
         await _navigator.NavigateViewModelAsync<SecondModel>(this, data: new Entity(name!));
+    }
+
+    public async Task ShowMyDialog()
+    {
+        try
+        {
+            var dialog = new ContentDialog()
+            {
+                Title = "Hello!",
+                Content = "No Message for you",
+                PrimaryButtonText = "Okay",
+                XamlRoot = XamlRootService.GetXamlRoot(),
+            };
+            await dialog.ShowAsync();
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"ShowMyDialog got exception: {ex.Message}");
+        }
     }
 }
 
